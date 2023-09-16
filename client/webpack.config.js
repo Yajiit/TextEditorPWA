@@ -19,7 +19,7 @@ module.exports = () => {
     },
     plugins: [
       new HtmlWebpackPlugin({
-        template: './client/index.html',
+        template: './index.html',
         filename: 'index.html',
       }),
       new WebpackPwaManifest({
@@ -31,19 +31,32 @@ module.exports = () => {
         theme_color: '#1e88e5',
         icons: [
           {
-            src: path.resolve('client/assets/icons/icon_96x96.png'),
+            src: path.resolve('./favicon.ico'),
             sizes: [72, 96, 128, 144, 192, 256, 384, 512],
           },
         ],
       }),
       new InjectManifest({
-        swSrc: './client/src-sw.js',
+        swSrc: './src-sw.js',
         swDest: 'sw.js',
       }),
     ],
     module: {
       rules: [
-        
+        {
+          test: /\.css$/,
+          use: ['style-loader', 'css-loader'],
+        },
+        {
+          test: /\.js$/,
+          exclude: /node_modules/,
+          use: {
+            loader: 'babel-loader',
+            options: {
+              presets: ['@babel/preset-env'],
+            },
+          },
+        },
       ],
     },
   };
