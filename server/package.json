@@ -11,7 +11,7 @@
         "server": "nodemon server.js --ignore client"
     },
     "keywords": [],
-    "author": "",
+    "author": "Yajiit",
     "license": "MIT",
     "dependencies": {
         "core-js": "^3.32.2",
