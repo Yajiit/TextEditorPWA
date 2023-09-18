@@ -30,12 +30,14 @@ module.exports = () => {
         publicPath: '/',
         background_color: '#ffffff',
         theme_color: '#1e88e5',
+        inject: true,
+        fingerprints: false,
         icons: [
           {
             src: path.resolve('src/images/logo.png'),
             sizes: [96, 128, 192, 256, 384, 512],
             destination: path.join('assets', 'icons'),
-            filename: 'assets/icons/icon_96x96.png'
+            filename: 'assets/icons/[name].[ext]'
           },
         ],
       }),
@@ -46,17 +48,6 @@ module.exports = () => {
     ],
     module: {
       rules: [
-        {
-          test: /\.(png|jpe?g|gif)$/i,
-          use: [
-            {
-              loader: 'file-loader',
-              options: {
-                name: 'assets/icons/[name].[contenthash].[ext]', // output file name and path
-              },
-            },
-          ],
-        },
         {
           test: /\.css$/i,
           use: ['style-loader', 'css-loader'],
