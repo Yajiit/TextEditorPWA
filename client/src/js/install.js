@@ -1,3 +1,4 @@
+// // client/src/js/install.js
 const butInstall = document.getElementById('buttonInstall');
 
 let deferredPrompt;
